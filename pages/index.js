@@ -1,65 +1,179 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
+
+import SearchField from '../src/components/searchfield'
+
+import dynamic from 'next/dynamic'
+
+const UserAvatar = dynamic(() =>
+  import('../src/components/useravatar')
+)
+
+//import UserAvatar from '../src/components/useravatar'
+
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Pagination from '@material-ui/lab/Pagination';
+
+import {useDispatch, useSelector} from 'react-redux'
+import {searchusergithubThunk, getusergithubThunk} from './../src/redux/slices/usergithub'
+
+
+
+
 
 export default function Home() {
+
+  const classes = useStyles();
+
+  const dispatch = useDispatch()
+  
+  const [page, setPage] = React.useState(0);
+  const [username, setUsername] = React.useState('');
+
+  const {usermanagement, userList} = useSelector(state => state.searchusergithub)
+
+
+  const searchusergithubThunkDispatch = (user, thepage) =>{
+    try {
+
+      const resultAction = dispatch(searchusergithubThunk({pagenum:++thepage,pagesize:10, username:user}));
+      const unwrapresult = unwrapResult(resultAction);
+      return unwrapresult.data;
+
+    } catch (err) {
+
+      return err;
+    }
+  }
+
+  const getusergithubThunkDispatch = (login) =>{
+    try {
+
+      const resultAction = dispatch(getusergithubThunk({login:login}))
+      const unwrapresult = unwrapResult(resultAction);
+      return unwrapresult.data;
+
+    } catch (err) {
+
+      return err;
+    }
+  }
+
+  const handleSearch = (search) =>{
+
+   if (search.length>2){
+      setUsername(search)
+      searchusergithubThunkDispatch(search, 1)
+   }
+    
+    
+  }
+
+  const handleChange = (event, value) =>{
+    //console.log('page',page)
+    setUsername(username)
+    setPage(value)
+    searchusergithubThunkDispatch(username, value)
+  }
+
+
+  React.useEffect(() => {
+    
+    if (usermanagement.status==='done'){ 
+      usermanagement.data.map(user=>{    
+        getusergithubThunkDispatch(user.login)
+      })
+    }
+  }, [usermanagement.status])
+
+
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+    <div className={classes.container}>
+      
+      <main className={classes.main}>
+        <h1 >
+          Oddle Front-End Challenge !
         </h1>
+        
+        <SearchField onChange={handleSearch} onSubmit={handleSearch} ></SearchField>
+        <div className={classes.searchres}>
+          
+          {/* { JSON.stringify(userList) } */}
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+          { usermanagement.status==='loading' && 
+            <CircularProgress></CircularProgress>
+          }
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          { usermanagement.status==='done' && (
+            usermanagement.data.map( user =>
+              <UserAvatar key={user.login} login={user.login} avatar_url={user.avatar_url}     
+              followers={
+                userList.status==='loading'?'getting...' : 
+                userList && userList.data && userList.data[user.login] ? userList.data[user.login].followers:'n/a'              
+              }             
+              
+              
+              
+              following={
+                userList.status==='loading'?'getting...' : 
+                userList && userList.data && userList.data[user.login] ? userList.data[user.login].following:'n/a'
+              } 
+              >
+              </UserAvatar>
+            )
+            )
+            
+          }
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          { usermanagement.status==='done' &&  usermanagement.countrows>10 && 
+          <Pagination count={(usermanagement.countrows/10).toFixed(0)-1} className={classes.pagination} page={page} onChange={handleChange}/>
+          }
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          {/* { JSON.stringify(usermanagement) } */}
+          
         </div>
+ 
+        
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      
     </div>
   )
 }
+
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    minHeight: '100vh',
+    padding: '0 0.5rem',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },  
+  main: {
+    padding: '1rem 0',
+    flex: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    margin: '0 30',
+    lineHeight: '1.15',
+    fontSize: '2rem',
+    textAlign: 'center',
+  },
+
+  searchres: {    
+    width:"400px"
+  },
+  pagination: {
+    '& > *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
