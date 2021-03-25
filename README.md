@@ -80,7 +80,11 @@ NON FUNCTIONAL REQUIREMENTS
 ![image](https://user-images.githubusercontent.com/5979589/112423088-96222c00-8d64-11eb-959a-8f52a3d00992.png)
 
 
-12. The application supports IE10. Unfortunately Not.
+12. The application supports IE10. Unfortunately Material UI only support IE 11 and Edge.
+
+![image](https://user-images.githubusercontent.com/5979589/112472370-a0155080-8d9f-11eb-963d-3511b8a486eb.png)
+
+By looking at the stats, IMHO it is not worth trading-off between IE 10 user (which is only share 1 % and old) and nowadays UI functionality industrial standard.
 
 13. Bundled with WebPack
 14. The application is deployed on AWS
