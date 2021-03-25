@@ -4,9 +4,15 @@ by Oki Nandoko Rakhim
 
 
 
-## Getting Started
+## THE APP ON LOCAL
 
-First, run the development server:
+On the directory
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
