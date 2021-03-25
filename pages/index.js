@@ -3,24 +3,26 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import SearchField from '../src/components/searchfield'
 
+// dinamically imported component
+// dynamic imports as another way to split your code into manageable chunks.
+/**** ---------------------------------------------------------------------*/
+
 import dynamic from 'next/dynamic'
 
 const UserAvatar = dynamic(() =>
   import('../src/components/useravatar')
 )
 
-//import UserAvatar from '../src/components/useravatar'
+/**** ---------------------------------------------------------------------*/
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+
+import LoadingIndicator from './../src/components/Progress/Indicator';
 import Pagination from '@material-ui/lab/Pagination';
 
 import {useDispatch, useSelector} from 'react-redux'
 import {searchusergithubThunk, getusergithubThunk} from './../src/redux/slices/usergithub'
 
 import Head from 'next/head';
-import {wrapper} from './../src/redux/store';
-
-
 
 
 export default function Home({ Component, pageProps }) {
@@ -103,6 +105,9 @@ export default function Home({ Component, pageProps }) {
           Oddle Front-End Challenge !
         </h1>
 
+        { usermanagement.status==='loading' &&             
+          <LoadingIndicator></LoadingIndicator>
+        }
         
         
         <SearchField onChange={handleSearch} onSubmit={handleSearch} ></SearchField>
@@ -110,11 +115,7 @@ export default function Home({ Component, pageProps }) {
           
           {/* { JSON.stringify(userList) } */}
 
-          { usermanagement.status==='loading' && 
-            <div className={classes.pagi}>
-            <CircularProgress></CircularProgress>
-            </div>
-          }
+          
 
           { usermanagement.status==='done' && (
             usermanagement.data.map( user =>

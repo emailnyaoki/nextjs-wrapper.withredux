@@ -3,21 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Paper from "@material-ui/core/Paper";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import {Redirect} from 'react-router-dom';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import Paper from "@material-ui/core/Paper";
 import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
   link:{
     fontSize:'12px',
     fontWeight:'700'
+  },
+  json:{
+    padding:'20px 20px'
   }
 }));
 
@@ -66,10 +64,10 @@ export default function UserDetail(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
-  const gotouserpage =() =>{
-    
-    return  <Redirect  to= {"/user" } />
-  }
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <Fade in={true} timeout={2000}>
@@ -103,10 +101,27 @@ export default function UserDetail(props) {
         <Typography variant="body2" color="textSecondary" component="p">   
             public repos. <span className={classes.val}>{props.data.public_repos}</span>        
         </Typography>
-        <div>
+        
+      </CardContent>    
+      <CardActions disableSpacing>
+        in JSON ...
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <div className={classes.json}>
             {JSON.stringify(props.data, null, 2)}
         </div>
-      </CardContent>     
+      </Collapse> 
     </Card>
 
     </Paper>

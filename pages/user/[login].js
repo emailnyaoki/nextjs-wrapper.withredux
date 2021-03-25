@@ -1,18 +1,22 @@
 import React from "react";
 import { useRouter } from 'next/router'
 import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import LoadingIndicator from './../../src/components/Progress/Indicator';
 import GridItem from "./../../src/components/Grid/GridItem";
 import GridContainer from "./../../src/components/Grid/GridContainer";
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import Link from 'next/link'
 import Router from 'next/router'
+import Head from 'next/head';
+
+
+
+// dinamically imported component
+// dynamic imports as another way to split your code into manageable chunks.
+/**** ---------------------------------------------------------------------*/
 
 import dynamic from 'next/dynamic'
-import Head from 'next/head';
 
 const UserDetail = dynamic(() =>
   import('./../../src/components/userdetail')
@@ -25,6 +29,7 @@ const Follow = dynamic(() =>
 const Repo = dynamic(() =>
   import('./../../src/components/repo')
 )
+/**** ---------------------------------------------------------------------*/
 
 
 import {useDispatch, useSelector} from 'react-redux'
@@ -140,7 +145,7 @@ const UserOne = (props) => {
      
       <main className={classes.main}>
             { userGet && userGet.status==='loading'  &&
-                <CircularProgress></CircularProgress>
+                <LoadingIndicator></LoadingIndicator>
             }
         
 

@@ -1,8 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
-
-
-
 
 // Create a theme instance.
 // accept mode as param, for example, let it be dark or light

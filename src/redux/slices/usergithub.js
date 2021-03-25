@@ -1,9 +1,6 @@
 import { createAsyncThunk, createAction,createSlice } from '@reduxjs/toolkit'
 import {api} from '../../api'
 
-import {useDispatch, useSelector} from 'react-redux'
-import { List } from 'material-ui'
-
 import {HYDRATE} from 'next-redux-wrapper';
 
 
