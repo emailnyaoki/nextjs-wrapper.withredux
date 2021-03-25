@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Behind The Scenes
 NON FUNCTIONAL REQUIREMENTS
-1. Built with NextJs (webpack included by default) and Material-UI (CSS in JS included)
+1. Built with NextJs (Webpack included by default) and Material-UI (CSS in JS included)
 2. Using Redux for State Management (redux-toolkit). Using createAsyncThunk as async reducer to get API.
 3. SSR, using wrapper.withredux at _app.js
 
@@ -37,6 +37,7 @@ NON FUNCTIONAL REQUIREMENTS
 11. CSS-in-JS is supported by Material-UI
 12. Responsive
 13. The application supports IE10
+14. Bundled with WebPack
 
 FUNCTIONAL REQUIREMENTS
 1. There is a search bar to let the user search by username (login name) - DONE
