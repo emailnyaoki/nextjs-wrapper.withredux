@@ -27,12 +27,18 @@ https://d3lpvx9c5mb27y.cloudfront.net/
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/5979589/112435264-16518d00-8d77-11eb-9084-59675a908563.gif)
 
+Type any username inside the search bar. As you type, the app will only continue to search if there is minimum 3 characters.
+As the list of users are displaying, the app is updating their followers and following number async'ly. 
+
+Click on any user to bring you to user detail page. The page will display the profile, along with its JSON and its followers, followings, and repos.
+You can click on any follower and following user. Click on repo data, will bring yo to his/her github.
 
 
 
 ## PAGESPEED INSIGHT
 
 Mobile and Desktop
+
 ![image](https://user-images.githubusercontent.com/5979589/112432081-f029ee00-8d72-11eb-9c00-2e5c9807e3a1.png)
 
 
