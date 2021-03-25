@@ -12,6 +12,13 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+
+## THE APP ON AWS
+
+Open
+
+https://daedo0z93dttr.cloudfront.net/
+
 ## THE APP
 
 ![image](https://user-images.githubusercontent.com/5979589/112423053-87d41000-8d64-11eb-88f0-1b415ee0c569.png)
@@ -43,6 +50,7 @@ NON FUNCTIONAL REQUIREMENTS
 
 12. The application supports IE10
 13. Bundled with WebPack
+14. The application is deployed on AWS
 
 FUNCTIONAL REQUIREMENTS
 1. There is a search bar to let the user search by username (login name) - DONE
