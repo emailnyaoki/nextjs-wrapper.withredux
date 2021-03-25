@@ -101,9 +101,9 @@ export default function Home({ Component, pageProps }) {
         </Head>
       
       <main className={classes.main}>
-        <h1 >
+        <p className={classes.title}>
           Oddle Front-End Challenge !
-        </h1>
+        </p>
 
         { usermanagement.status==='loading' &&             
           <LoadingIndicator></LoadingIndicator>
@@ -166,21 +166,18 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 0.5rem',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
   },  
   main: {
     padding: '1rem 0',
     flex: '1',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: 'column',    
     alignItems: 'center',
   },
   title: {
-    margin: '0 30',
     lineHeight: '1.15',
-    fontSize: '2rem',
+    fontSize: '1.5rem',
     textAlign: 'center',
   },
 

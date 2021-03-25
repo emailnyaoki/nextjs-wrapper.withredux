@@ -1,0 +1,17 @@
+{
+  "name": "zml9iaj-nim47q",
+  "hash": "FInr5B014FjSyeywymo5blLsNOYRnK7reiqIYyBHaMU=",
+  "description": "API Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "F:\\OKINR\\2021\\Oddle\\oddle-frontend\\.serverless_nextjs\\api-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::669172729524:role/zml9iaj-c36vf5e"
+  },
+  "arn": "arn:aws:lambda:us-east-1:669172729524:function:zml9iaj-nim47q",
+  "region": "us-east-1"
+}

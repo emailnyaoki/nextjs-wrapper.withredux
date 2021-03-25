@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     maxWidth: 550,
+    minWidth: 300,
     marginBottom:'40px',
     background: 'linear-gradient(45deg, #ecf1f5  5%, #a6bed4 90%)',
   },

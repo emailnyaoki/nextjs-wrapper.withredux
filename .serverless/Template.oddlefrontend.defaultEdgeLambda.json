@@ -1,0 +1,17 @@
+{
+  "name": "zml9iaj-1w4bgp",
+  "hash": "Pc2Q9dcp94nDNLMFojvJxGacjO6IwztoUeN9kzxM1dc=",
+  "description": "Default Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "F:\\OKINR\\2021\\Oddle\\oddle-frontend\\.serverless_nextjs\\default-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::669172729524:role/zml9iaj-9wq9nsh"
+  },
+  "arn": "arn:aws:lambda:us-east-1:669172729524:function:zml9iaj-1w4bgp",
+  "region": "us-east-1"
+}
