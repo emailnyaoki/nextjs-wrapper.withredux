@@ -1,3 +1,4 @@
+
 ## Oddle Front End Challenge 
 by Oki Nandoko Rakhim
 
@@ -31,7 +32,7 @@ https://d3lpvx9c5mb27y.cloudfront.net/
 
 ## THE APP
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/5979589/112435264-16518d00-8d77-11eb-9084-59675a908563.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/5979589/112443091-1d7c9900-8d7f-11eb-80ab-ff12543a1050.gif)
 
 Type any username inside the search bar. As you type, the app will only continue to search if there is minimum 3 characters.
 As the list of users are displaying, the app is updating their followers and following number async'ly. 
