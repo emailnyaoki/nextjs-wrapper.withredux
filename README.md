@@ -13,10 +13,11 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## THE APP
-![image](https://user-images.githubusercontent.com/5979589/112422039-d7b1d780-8d62-11eb-9240-bc47a751cfb9.png)
-![image](https://user-images.githubusercontent.com/5979589/112422065-e1d3d600-8d62-11eb-8f6a-eef270d8d813.png)
-![image](https://user-images.githubusercontent.com/5979589/112422170-0cbe2a00-8d63-11eb-8e88-c6020e39118a.png)
-![image](https://user-images.githubusercontent.com/5979589/112422235-21022700-8d63-11eb-95dd-3ad06c8d22c5.png)
+
+![image](https://user-images.githubusercontent.com/5979589/112423053-87d41000-8d64-11eb-88f0-1b415ee0c569.png)
+![image](https://user-images.githubusercontent.com/5979589/112423062-8acf0080-8d64-11eb-8247-74c33c0cb24a.png)
+![image](https://user-images.githubusercontent.com/5979589/112423067-8d315a80-8d64-11eb-9580-598f3eaaf7f5.png)
+![image](https://user-images.githubusercontent.com/5979589/112423076-902c4b00-8d64-11eb-9ba3-c34ac970ea87.png)
 
 
 
@@ -36,7 +37,9 @@ NON FUNCTIONAL REQUIREMENTS
 9. Support theming. There's swicth to change between two modes.
 10. CSS-in-JS is supported by Material-UI
 11. Responsive
-![image](https://user-images.githubusercontent.com/5979589/112422825-13996c80-8d64-11eb-897f-c62bb8aae070.png)
+
+![image](https://user-images.githubusercontent.com/5979589/112423088-96222c00-8d64-11eb-959a-8f52a3d00992.png)
+
 
 12. The application supports IE10
 13. Bundled with WebPack
