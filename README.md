@@ -32,7 +32,7 @@ https://d3lpvx9c5mb27y.cloudfront.net/
 
 ## PAGESPEED INSIGHT
 
-Mobile and Deskktop
+Mobile and Desktop
 ![image](https://user-images.githubusercontent.com/5979589/112432081-f029ee00-8d72-11eb-9c00-2e5c9807e3a1.png)
 
 
