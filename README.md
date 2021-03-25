@@ -33,6 +33,7 @@ As the list of users are displaying, the app is updating their followers and fol
 Click on any user to bring you to user detail page. The page will display the profile, along with its JSON and its followers, followings, and repos.
 You can click on any follower and following user. Click on repo data, will bring yo to his/her github.
 
+![image](https://user-images.githubusercontent.com/5979589/112437529-a09af080-8d79-11eb-8a05-f5adadcfdffe.png)
 
 
 ## PAGESPEED INSIGHT
