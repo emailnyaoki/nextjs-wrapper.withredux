@@ -25,10 +25,10 @@ https://d3lpvx9c5mb27y.cloudfront.net/
 
 ## THE APP
 
-![image](https://user-images.githubusercontent.com/5979589/112423053-87d41000-8d64-11eb-88f0-1b415ee0c569.png)
-![image](https://user-images.githubusercontent.com/5979589/112423062-8acf0080-8d64-11eb-8247-74c33c0cb24a.png)
-![image](https://user-images.githubusercontent.com/5979589/112423067-8d315a80-8d64-11eb-9580-598f3eaaf7f5.png)
-![image](https://user-images.githubusercontent.com/5979589/112423076-902c4b00-8d64-11eb-9ba3-c34ac970ea87.png)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/5979589/112435264-16518d00-8d77-11eb-9084-59675a908563.gif)
+
+
+
 
 ## PAGESPEED INSIGHT
 
