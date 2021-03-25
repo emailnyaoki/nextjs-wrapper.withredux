@@ -21,7 +21,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Open
 
-https://daedo0z93dttr.cloudfront.net/
+https://d3lpvx9c5mb27y.cloudfront.net/
 
 ## THE APP
 
@@ -29,6 +29,11 @@ https://daedo0z93dttr.cloudfront.net/
 ![image](https://user-images.githubusercontent.com/5979589/112423062-8acf0080-8d64-11eb-8247-74c33c0cb24a.png)
 ![image](https://user-images.githubusercontent.com/5979589/112423067-8d315a80-8d64-11eb-9580-598f3eaaf7f5.png)
 ![image](https://user-images.githubusercontent.com/5979589/112423076-902c4b00-8d64-11eb-9ba3-c34ac970ea87.png)
+
+## PAGESPEED INSIGHT
+
+Mobile and Deskktop
+![image](https://user-images.githubusercontent.com/5979589/112432081-f029ee00-8d72-11eb-9c00-2e5c9807e3a1.png)
 
 
 
@@ -67,4 +72,3 @@ FUNCTIONAL REQUIREMENTS
 
 
 
-More coming up...
