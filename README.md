@@ -1,5 +1,6 @@
-##~ This is an Oddle Front End Challenge ~
+## Oddle Front End Challenge 
 by Oki Nandoko Rakhim
+
 
 
 
