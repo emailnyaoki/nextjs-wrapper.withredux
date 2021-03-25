@@ -35,6 +35,12 @@ You can click on any follower and following user. Click on repo data, will bring
 
 ![image](https://user-images.githubusercontent.com/5979589/112437529-a09af080-8d79-11eb-8a05-f5adadcfdffe.png)
 
+Pretty JSON
+
+![image](https://user-images.githubusercontent.com/5979589/112437758-dcce5100-8d79-11eb-9398-e4e1ead63820.png)
+
+Theming
+
 
 ## PAGESPEED INSIGHT
 
