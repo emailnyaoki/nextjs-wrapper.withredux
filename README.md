@@ -30,7 +30,7 @@ Open
 
 https://d3lpvx9c5mb27y.cloudfront.net/
 
-I deployed the app using AWS Amplify. According to their website, AWS Amplify is a set of tools and services that can be used together or on their own, to help front-end web and mobile developers build scalable full stack applications, powered by AWS. With Amplify, you can configure app backends and connect your app in minutes, deploy static web apps in a few clicks, and easily manage app content outside the AWS console. Amplify supports popular web frameworks including JavaScript, React, Angular, Vue, Next.js, and mobile platforms including Android, iOS, React Native, Ionic, Flutter. 
+I deployed the app using AWS Amplify CLI. 
 
 ## THE APP
 
@@ -72,6 +72,7 @@ NON FUNCTIONAL REQUIREMENTS
 6. Transition Effect: using Transition form Material-UI
 7. All pages' URL is reusable. For user detail page, I use dynamic page of NextJs.
 8. SEO opitimized. View page resource of each page, there are title and meta tag.
+   -- It is actually not that simple. There are numerous non-technical factors like content, word count, heading, speed, links, sitemap etc.
 9. Support theming. There's swicth to change between two modes.
 10. CSS-in-JS is supported by Material-UI
 11. Responsive
@@ -79,7 +80,8 @@ NON FUNCTIONAL REQUIREMENTS
 ![image](https://user-images.githubusercontent.com/5979589/112423088-96222c00-8d64-11eb-959a-8f52a3d00992.png)
 
 
-12. The application supports IE10
+12. The application supports IE10. Not yet
+
 13. Bundled with WebPack
 14. The application is deployed on AWS
 
