@@ -28,16 +28,18 @@ NON FUNCTIONAL REQUIREMENTS
 
 ![image](https://user-images.githubusercontent.com/5979589/112420717-42154880-8d60-11eb-92d7-2424c2674daf.png)
 
-5. Some custom components (with data) are dinamically imported. This is one way of some to code splitting.
-6. CSS : using modified Progress component from Material-UI
-7. Transition Effect: using Transition form Material-UI
-8. All pages' URL is reusable. For user detail page, I use dynamic page of NextJs.
-9. SEO opitimized. View page resource of each page, there are title and meta tag.
-10. Support theming. There's swicth to change between two modes.
-11. CSS-in-JS is supported by Material-UI
-12. Responsive
-13. The application supports IE10
-14. Bundled with WebPack
+4. Some custom components (with data) are dinamically imported. This is one way of some to code splitting.
+5. CSS : using modified Progress component from Material-UI
+6. Transition Effect: using Transition form Material-UI
+7. All pages' URL is reusable. For user detail page, I use dynamic page of NextJs.
+8. SEO opitimized. View page resource of each page, there are title and meta tag.
+9. Support theming. There's swicth to change between two modes.
+10. CSS-in-JS is supported by Material-UI
+11. Responsive
+![image](https://user-images.githubusercontent.com/5979589/112422825-13996c80-8d64-11eb-897f-c62bb8aae070.png)
+
+12. The application supports IE10
+13. Bundled with WebPack
 
 FUNCTIONAL REQUIREMENTS
 1. There is a search bar to let the user search by username (login name) - DONE
