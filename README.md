@@ -80,7 +80,7 @@ NON FUNCTIONAL REQUIREMENTS
 ![image](https://user-images.githubusercontent.com/5979589/112423088-96222c00-8d64-11eb-959a-8f52a3d00992.png)
 
 
-12. The application supports IE10. Not yet
+12. The application supports IE10. Unfortunately Not.
 
 13. Bundled with WebPack
 14. The application is deployed on AWS
