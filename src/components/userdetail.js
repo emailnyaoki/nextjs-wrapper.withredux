@@ -57,7 +57,8 @@ const useStyles = makeStyles((theme) => ({
   },
   json:{
     padding:'20px 20px'
-  }
+  },
+  pre: { display: 'block', padding: '10px 30px', margin: '0', overflow: 'scroll' }
 }));
 
 export default function UserDetail(props) {
@@ -119,7 +120,11 @@ export default function UserDetail(props) {
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <div className={classes.json}>
-            {JSON.stringify(props.data, null, 2)}
+
+            <pre className={classes.pre}>
+              {JSON.stringify(props.data, null, 2)} 
+            </pre>
+            
         </div>
       </Collapse> 
     </Card>

@@ -272,7 +272,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto'
   },
   
-main: {
+    main: {
     padding: '1rem 0',
     alignItems: 'center',
   },
@@ -319,5 +319,6 @@ main: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center'
-  }
+  },
+  
 }));
