@@ -10,7 +10,6 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -19,16 +18,24 @@ import Paper from "@material-ui/core/Paper";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import {Redirect} from 'react-router-dom';
-import Link from 'next/link'
+import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 200,
-    
+    minWidth: 200,    
     background: 'linear-gradient(45deg, #ecf1f5  5%, #a6bed4 90%)',
-    marginTop:"5px"
-   
+    marginTop:"5px",
+       
   },
+  loginname :{
+    fontSize: '20px',
+    fontWeight: 600
+  },
+  val :{
+    
+    fontWeight: 600
+  },
+
   large: {
     width: theme.spacing(12),
     height: theme.spacing(12),
@@ -48,9 +55,7 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  avatar: {
-    backgroundColor: red[500],
-  },
+  
   link:{
     fontSize:'12px',
     fontWeight:'700'
@@ -67,6 +72,7 @@ export default function UserDetail(props) {
   }
 
   return (
+    <Fade in={true} timeout={2000}>
     <Paper className={classes.root} elevation={1}>
     <Card className={classes.root}>
       <CardHeader
@@ -74,45 +80,36 @@ export default function UserDetail(props) {
         avatar={
           <Avatar alt={props.data.login} src={props.data.avatar_url||''} className={classes.large} />
         }       
-        title={props.data.login}
+        title={<span className={classes.loginname}>{props.data.login}</span>}
         subheader={ props.data.followers+' followers, '+props.data.following+' following'}
       /> 
-     {/* 
-     "name": "Michał Ka",
-  "company": null,
-  "blog": "http://www.md6.org/",
-  "location": "Poland",
-  "email": null,
-  "hireable": null,
-  "bio": null,
-  "twitter_username": null,
-  "public_repos": 55,
-  "public_gists": 210,
-  "followers": 33,
-  "following": 34,
-      */}
+     
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">  
-            name: {props.data.name}        
+            name. <span className={classes.val}>{props.data.name}</span> 
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">   
-            company: {props.data.company}        
+            company. <span className={classes.val}>{props.data.company}</span>        
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">   
-            blog: {props.data.blog}        
+            blog. <span className={classes.val}>{props.data.blog}</span>        
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">   
-            location: {props.data.location}        
+            location. <span className={classes.val}>{props.data.location}</span>        
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">   
-            bio: {props.data.bio}        
+            bio. <span className={classes.val}>{props.data.bio}</span>        
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">   
-            public repos:{props.data.public_repos}        
+            public repos. <span className={classes.val}>{props.data.public_repos}</span>        
         </Typography>
+        <div>
+            {JSON.stringify(props.data, null, 2)}
+        </div>
       </CardContent>     
     </Card>
 
     </Paper>
+    </Fade>
   );
 }

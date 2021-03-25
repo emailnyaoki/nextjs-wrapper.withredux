@@ -1,50 +1,13 @@
-import { createAsyncThunk,createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createAction,createSlice } from '@reduxjs/toolkit'
 import {api} from '../../api'
 
 import {useDispatch, useSelector} from 'react-redux'
 import { List } from 'material-ui'
 
+import {HYDRATE} from 'next-redux-wrapper';
 
 
-const fakedatauser = 
-
-        {data: 
-          {
-            "login": "emailnyaoki",
-            "id": 5979589,
-            "node_id": "MDQ6VXNlcjU5Nzk1ODk=",
-            "avatar_url": "https://avatars.githubusercontent.com/u/5979589?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/emailnyaoki",
-            "html_url": "https://github.com/emailnyaoki",
-            "followers_url": "https://api.github.com/users/emailnyaoki/followers",
-            "following_url": "https://api.github.com/users/emailnyaoki/following{/other_user}",
-            "gists_url": "https://api.github.com/users/emailnyaoki/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/emailnyaoki/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/emailnyaoki/subscriptions",
-            "organizations_url": "https://api.github.com/users/emailnyaoki/orgs",
-            "repos_url": "https://api.github.com/users/emailnyaoki/repos",
-            "events_url": "https://api.github.com/users/emailnyaoki/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/emailnyaoki/received_events",
-            "type": "User",
-            "site_admin": false,
-            "name": null,
-            "company": null,
-            "blog": "",
-            "location": null,
-            "email": null,
-            "hireable": null,
-            "bio": null,
-            "twitter_username": null,
-            "public_repos": 32,
-            "public_gists": 2,
-            "followers": 0,
-            "following": 0,
-            "created_at": "2013-11-19T11:56:42Z",
-            "updated_at": "2021-03-16T06:39:45Z"
-          }
-
-        }
+const hydrate = createAction(HYDRATE);
 
 
 // Thunks
@@ -620,6 +583,15 @@ const slice = createSlice({
 
     
     },
+
+
+    [HYDRATE]:(state, action) => {
+          console.log('HYDRATE', state, action.payload);
+            return {
+                ...state,
+                ...action.payload[slice.name],
+            };
+    }
 
 
 

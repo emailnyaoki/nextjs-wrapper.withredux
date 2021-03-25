@@ -5,8 +5,14 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import GridItem from "./../../src/components/Grid/GridItem";
 import GridContainer from "./../../src/components/Grid/GridContainer";
 import Typography from '@material-ui/core/Typography';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Link from 'next/link'
+import Router from 'next/router'
 
 import dynamic from 'next/dynamic'
+import Head from 'next/head';
 
 const UserDetail = dynamic(() =>
   import('./../../src/components/userdetail')
@@ -26,13 +32,7 @@ import {getuseronegithubThunk, getreposThunk, getfollowingThunk, getfollowersThu
 
 
 
-export async function getServerSideProps(context) {
-    return {
-      props: {}, // will be passed to the page component as props
-    };
-}
-
-const UserOne = () => {
+const UserOne = (props) => {
   const router = useRouter()
   const { login } = router.query
 
@@ -111,6 +111,9 @@ const UserOne = () => {
 
   },[])
 
+
+  
+
   React.useEffect(() => {
     
     getuseronegithubThunkDispatch(login)        
@@ -120,25 +123,49 @@ const UserOne = () => {
 
   },[login])
 
+
+  const backtohome= () =>{
+      Router.push('/')
+  }
+
   return (
+      
 
     <div className={classes.container}>
+        <Head>
+            <title>Oddle - Github User {login}</title>
+            <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" key="viewport"  />
+            <meta name="description" content={`Github - See followers, following and repos of ${login}`} key="description" />
+        </Head>
      
       <main className={classes.main}>
-        <h1 className={classes.title}>
-          User Page : {login}
-        </h1>
+            { userGet && userGet.status==='loading'  &&
+                <CircularProgress></CircularProgress>
+            }
+        
+
+        <GridContainer>    
+          <GridItem xs={12} sm={12} md={3} >
+              <div className={classes.backbutton}>                
+                <IconButton  className={classes.large} onClick={backtohome}  aria-label="back to home" component="span">
+                    <ArrowBackIcon ></ArrowBackIcon>
+                </IconButton>
+              </div>
+          </GridItem>
+          <GridItem xs={12} sm={12} md={6} className={classes.profile}>
+            
+            {userList && userList.data && userList.data[login] &&
+                <UserDetail data={userList.data[login]}></UserDetail>
+            }
+            { !(userList && userList.data && userList.data[login]) &&  userGet && userGet.data && 
+                <UserDetail data={userGet.data}></UserDetail>
+            }
+          </GridItem>
+          <GridItem xs={12} sm={12} md={3}></GridItem>
+        </GridContainer>    
         
         <div className={classes.profile}>
-        { userGet && userGet.status==='loading'  &&
-            <CircularProgress></CircularProgress>
-        }
-        {userList && userList.data && userList.data[login] &&
-            <UserDetail data={userList.data[login]}></UserDetail>
-        }
-        { !(userList && userList.data && userList.data[login]) &&  userGet && userGet.data && 
-            <UserDetail data={userGet.data}></UserDetail>
-        }
+        
  
         </div>
 
@@ -155,7 +182,7 @@ const UserOne = () => {
             <div className={classes.section}>
                 
                     {followers.data.map( user =>
-                    <Follow key={'flwr'+user.login} login={user.login} avatar_url={user.avatar_url} >
+                    <Follow key={'flwr'+user.login} login={user.login} avatar_url={user.avatar_url} direction='right' >
                     </Follow>
                     )}
                   
@@ -175,7 +202,7 @@ const UserOne = () => {
             <div className={classes.section}>
                 
                     {following.data.map( user =>
-                    <Follow key={'flwg'+user.login} login={user.login} avatar_url={user.avatar_url}>
+                    <Follow key={'flwg'+user.login} login={user.login} avatar_url={user.avatar_url} direction='up'>
                     </Follow>
                     )}
                                   
@@ -195,7 +222,7 @@ const UserOne = () => {
             <div className={classes.section}>
                 
                     {repos.data.map( repo =>
-                        <Repo key={'repo'+repo.id} name={repo.name}  description={repo.description} html_url={repo.html_url}>
+                        <Repo key={'repo'+repo.id} name={repo.name}  description={repo.description} html_url={repo.html_url} direction='left'>
                         </Repo>
                     )}
                                   
@@ -217,6 +244,18 @@ const UserOne = () => {
 }
 
 export default UserOne
+
+export const getServerSideProps = async (context) => {
+//export async function getServerSideProps(context) {
+
+    console.log('get first', context.query.login)
+    
+    
+
+    return {
+      props: {}, // will be passed to the page component as props
+    };
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -252,7 +291,7 @@ main: {
   },
   sectiontitle: {    
     padding:'15px 5px 0px',
-    margin: 'auto'
+    textAlign: 'center'
   },
   section: {    
     padding:'5px 5px'
@@ -263,4 +302,17 @@ main: {
       marginTop: theme.spacing(2),
     },
   },
+  large: {
+    marginTop:'100px',
+    width: theme.spacing(9),
+    height: theme.spacing(9),
+    backgroundColor: '#c4d4e2',
+    color: theme.palette.text.primary
+  },
+  backbutton: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center'
+  }
 }));

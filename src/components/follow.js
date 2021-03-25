@@ -10,16 +10,13 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 import Paper from "@material-ui/core/Paper";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import {Redirect} from 'react-router-dom';
 import Link from 'next/link'
+import Slide from '@material-ui/core/Slide';
+import Router from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,9 +43,6 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  avatar: {
-    backgroundColor: red[500],
-  },
   link:{
     fontSize:'12px',
     fontWeight:'700'
@@ -57,8 +51,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Follow(props) {
   const classes = useStyles();
+
+  const gotouserpage =() =>{
+    Router.push(`/user/${props.login}`)
+  }
   
   return (
+    <Slide direction={props.direction || 'up'} in={true} mountOnEnter unmountOnExit>
     <Paper className={classes.root} elevation={1}>
     <Card className={classes.root}>
       <CardHeader
@@ -67,14 +66,14 @@ export default function Follow(props) {
           <Avatar alt={props.login} src={props.avatar_url||''} />
         }
         action={
-          <IconButton aria-label="settings" onClick={(event) => event.stopPropagation()}  > 
-            <ArrowForwardIosIcon ></ArrowForwardIosIcon>                  
-            <Link href={"/user/[login]"} as={`/user/${props.login}`} ><p className={classes.link}>go</p></Link>
+          <IconButton aria-label="settings" onClick={gotouserpage}  > 
+            <ArrowForwardIosIcon ></ArrowForwardIosIcon>
           </IconButton>
         }
         title={props.login}
       />      
     </Card>
     </Paper>
+    </Slide>
   );
 }

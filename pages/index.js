@@ -17,11 +17,13 @@ import Pagination from '@material-ui/lab/Pagination';
 import {useDispatch, useSelector} from 'react-redux'
 import {searchusergithubThunk, getusergithubThunk} from './../src/redux/slices/usergithub'
 
+import Head from 'next/head';
+import {wrapper} from './../src/redux/store';
 
 
 
 
-export default function Home() {
+export default function Home({ Component, pageProps }) {
 
   const classes = useStyles();
 
@@ -60,7 +62,7 @@ export default function Home() {
   }
 
   const handleSearch = (search) =>{
-
+    console.log('asasas')
    if (search.length>2){
       setUsername(search)
       searchusergithubThunkDispatch(search, 1)
@@ -90,11 +92,18 @@ export default function Home() {
 
   return (
     <div className={classes.container}>
+        <Head>
+            <title>Oddle - Search Github User </title>
+            <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" key="viewport"  />
+            <meta name="description" content='Oddle Front End Challenge' key="description" />
+        </Head>
       
       <main className={classes.main}>
         <h1 >
           Oddle Front-End Challenge !
         </h1>
+
+        
         
         <SearchField onChange={handleSearch} onSubmit={handleSearch} ></SearchField>
         <div className={classes.searchres}>
@@ -102,7 +111,9 @@ export default function Home() {
           {/* { JSON.stringify(userList) } */}
 
           { usermanagement.status==='loading' && 
+            <div className={classes.pagi}>
             <CircularProgress></CircularProgress>
+            </div>
           }
 
           { usermanagement.status==='done' && (
@@ -113,12 +124,12 @@ export default function Home() {
                 userList && userList.data && userList.data[user.login] ? userList.data[user.login].followers:'n/a'              
               }             
               
-              
-              
               following={
                 userList.status==='loading'?'getting...' : 
                 userList && userList.data && userList.data[user.login] ? userList.data[user.login].following:'n/a'
               } 
+
+              direction='up'
               >
               </UserAvatar>
             )
@@ -127,7 +138,9 @@ export default function Home() {
           }
 
           { usermanagement.status==='done' &&  usermanagement.countrows>10 && 
+          <div className={classes.pagi}>
           <Pagination count={(usermanagement.countrows/10).toFixed(0)-1} className={classes.pagination} page={page} onChange={handleChange}/>
+          </div>
           }
 
           {/* { JSON.stringify(usermanagement) } */}
@@ -141,6 +154,9 @@ export default function Home() {
     </div>
   )
 }
+
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -175,5 +191,9 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(2),
     },
   },
+  pagi:{
+    justifyContent: 'center',
+    display: 'flex'
+  }
 }));
 
