@@ -30,6 +30,8 @@ Open
 
 https://d3lpvx9c5mb27y.cloudfront.net/
 
+I deployed the app using AWS Amplify. According to their website, AWS Amplify is a set of tools and services that can be used together or on their own, to help front-end web and mobile developers build scalable full stack applications, powered by AWS. With Amplify, you can configure app backends and connect your app in minutes, deploy static web apps in a few clicks, and easily manage app content outside the AWS console. Amplify supports popular web frameworks including JavaScript, React, Angular, Vue, Next.js, and mobile platforms including Android, iOS, React Native, Ionic, Flutter. 
+
 ## THE APP
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/5979589/112443091-1d7c9900-8d7f-11eb-80ab-ff12543a1050.gif)
@@ -37,7 +39,7 @@ https://d3lpvx9c5mb27y.cloudfront.net/
 Type any username inside the search bar. As you type, the app will only continue to search if there is minimum 3 characters.
 As the list of users are displaying, the app is updating their followers and following number async'ly. 
 
-Click on any user to bring you to user detail page. The page will display the profile, along with its JSON and its followers, followings, and repos.
+Click on any user to bring you to user detail page. The page will display the profile, its JSON, its followers, followings, and repos.
 You can click on any follower and following user. Click on repo data, will bring yo to his/her github.
 
 ![image](https://user-images.githubusercontent.com/5979589/112437529-a09af080-8d79-11eb-8a05-f5adadcfdffe.png)
