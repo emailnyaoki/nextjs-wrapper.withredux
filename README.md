@@ -1,3 +1,4 @@
+
 ## Oddle Front End Challenge 
 by Oki Nandoko Rakhim
 
@@ -29,14 +30,16 @@ Open
 
 https://d3lpvx9c5mb27y.cloudfront.net/
 
+I deployed the app using AWS Amplify CLI. 
+
 ## THE APP
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/5979589/112435264-16518d00-8d77-11eb-9084-59675a908563.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/5979589/112443091-1d7c9900-8d7f-11eb-80ab-ff12543a1050.gif)
 
 Type any username inside the search bar. As you type, the app will only continue to search if there is minimum 3 characters.
 As the list of users are displaying, the app is updating their followers and following number async'ly. 
 
-Click on any user to bring you to user detail page. The page will display the profile, along with its JSON and its followers, followings, and repos.
+Click on any user to bring you to user detail page. The page will display the profile, its JSON, its followers, followings, and repos.
 You can click on any follower and following user. Click on repo data, will bring yo to his/her github.
 
 ![image](https://user-images.githubusercontent.com/5979589/112437529-a09af080-8d79-11eb-8a05-f5adadcfdffe.png)
@@ -69,6 +72,7 @@ NON FUNCTIONAL REQUIREMENTS
 6. Transition Effect: using Transition form Material-UI
 7. All pages' URL is reusable. For user detail page, I use dynamic page of NextJs.
 8. SEO opitimized. View page resource of each page, there are title and meta tag.
+   -- It is actually not that simple. There are numerous non-technical factors like content, word count, heading, speed, links, sitemap etc.
 9. Support theming. There's swicth to change between two modes.
 10. CSS-in-JS is supported by Material-UI
 11. Responsive
@@ -76,7 +80,12 @@ NON FUNCTIONAL REQUIREMENTS
 ![image](https://user-images.githubusercontent.com/5979589/112423088-96222c00-8d64-11eb-959a-8f52a3d00992.png)
 
 
-12. The application supports IE10
+12. The application supports IE10. Unfortunately Material UI only support IE 11 and Edge.
+
+![image](https://user-images.githubusercontent.com/5979589/112472370-a0155080-8d9f-11eb-963d-3511b8a486eb.png)
+
+By looking at the stats, IMHO it is not worth trading-off between IE 10 user (which is only share 1 % and old) and nowadays UI functionality industrial standard.
+
 13. Bundled with WebPack
 14. The application is deployed on AWS
 
