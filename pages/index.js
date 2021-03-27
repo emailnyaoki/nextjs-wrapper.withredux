@@ -16,7 +16,7 @@ const UserAvatar = dynamic(() =>
 /**** ---------------------------------------------------------------------*/
 
 
-import LoadingIndicator from './../src/components/Progress/Indicator';
+import LoadingIndicatorFlat from './../src/components/Progress/IndicatorFlat';
 import Pagination from '@material-ui/lab/Pagination';
 
 import {useDispatch, useSelector} from 'react-redux'
@@ -104,10 +104,11 @@ export default function Home({ Component, pageProps }) {
         <p className={classes.title}>
           Oddle Front-End Challenge !
         </p>
-
-        { usermanagement.status==='loading' &&             
-          <LoadingIndicator></LoadingIndicator>
-        }
+        
+                   
+        <LoadingIndicatorFlat loading={usermanagement.status==='loading'}></LoadingIndicatorFlat>
+        
+        
         
         
         <SearchField onChange={handleSearch} onSubmit={handleSearch} ></SearchField>
