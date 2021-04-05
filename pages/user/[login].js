@@ -255,19 +255,6 @@ const UserOne = (props) => {
 
 export default UserOne
 
-/* export const getServerSideProps = async (context) => {
-//export async function getServerSideProps(context) {
-
-    console.log('get first', context.query.login)
-
-    
-    
-  
-    
-    return {
-      props: {}, // will be passed to the page component as props
-    };
-}  */
 
 export const getServerSideProps =  wrapper.getServerSideProps(   //{store, req, res, ...etc}
   async (context) => {

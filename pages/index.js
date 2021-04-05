@@ -23,6 +23,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {searchusergithubThunk, getusergithubThunk} from './../src/redux/slices/usergithub'
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 
 export default function Home({ Component, pageProps }) {
@@ -35,6 +36,14 @@ export default function Home({ Component, pageProps }) {
   const [username, setUsername] = React.useState('');
 
   const {usermanagement, userList} = useSelector(state => state.searchusergithub)
+
+
+  const router = useRouter();
+  // Call this function whenever you want to
+  // refresh props!
+  const refreshData = () => {
+    router.replace(router.asPath);
+  }
 
 
   const searchusergithubThunkDispatch = (user, thepage) =>{
