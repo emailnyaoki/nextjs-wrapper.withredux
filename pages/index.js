@@ -16,7 +16,8 @@ const UserAvatar = dynamic(() =>
 /**** ---------------------------------------------------------------------*/
 
 
-import LoadingIndicatorFlat from './../src/components/Progress/IndicatorFlat';
+//import LoadingIndicatorFlat from './../src/components/Progress/IndicatorFlat';
+import LoadingIndicatorSSR from './../src/components/Progress/IndicatorSSR';
 import Pagination from '@material-ui/lab/Pagination';
 
 import {useDispatch, useSelector} from 'react-redux'
@@ -24,16 +25,17 @@ import {searchusergithubThunk, getusergithubThunk} from './../src/redux/slices/u
 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import {wrapper} from './../src/redux/storessr';
 
 
-export default function Home({ Component, pageProps }) {
+export default function Home(props) {
 
   const classes = useStyles();
 
   const dispatch = useDispatch()
   
-  const [page, setPage] = React.useState(0);
-  const [username, setUsername] = React.useState('');
+  const [page, setPage] = React.useState(props.pagenum||0);
+  const [username, setUsername] = React.useState(props.search||'');
 
   const {usermanagement, userList} = useSelector(state => state.searchusergithub)
 
@@ -41,8 +43,8 @@ export default function Home({ Component, pageProps }) {
   const router = useRouter();
   // Call this function whenever you want to
   // refresh props!
-  const refreshData = () => {
-    router.replace(router.asPath);
+  const refreshData = (search,page) => {
+    router.replace(router.pathname+"?search="+search+"&page="+page);
   }
 
 
@@ -74,30 +76,38 @@ export default function Home({ Component, pageProps }) {
 
   const handleSearch = (search) =>{
     console.log('asasas')
-   if (search.length>2){
-      setUsername(search)
-      searchusergithubThunkDispatch(search, 1)
-   }
+    if (search.length>2){
+        setUsername(search)
+        //searchusergithubThunkDispatch(search, 1)
+        refreshData(search,1)
+    }
+
+   
     
     
   }
 
   const handleChange = (event, value) =>{
     //console.log('page',page)
-    setUsername(username)
-    setPage(value)
-    searchusergithubThunkDispatch(username, value)
+    //setUsername(username)
+    //setPage(value)
+    //searchusergithubThunkDispatch(username, value)
+    refreshData(username,value)
+    
   }
 
 
-  React.useEffect(() => {
+ /*  React.useEffect(() => {
+
+    
     
     if (usermanagement.status==='done'){ 
+      console.log('here')
       usermanagement.data.map(user=>{    
         getusergithubThunkDispatch(user.login)
       })
     }
-  }, [usermanagement.status])
+  }, [usermanagement.status]) */
 
 
 
@@ -115,8 +125,10 @@ export default function Home({ Component, pageProps }) {
         </p>
         
                    
-        <LoadingIndicatorFlat loading={usermanagement.status==='loading'}></LoadingIndicatorFlat>
-        
+        {/* <LoadingIndicatorFlat loading={usermanagement.status==='loading'}></LoadingIndicatorFlat> */}
+
+        {/* it is unable to get pending/rejected state from server side render. that is why it is using Router event */}
+        <LoadingIndicatorSSR ></LoadingIndicatorSSR>
         
         
         
@@ -164,7 +176,40 @@ export default function Home({ Component, pageProps }) {
       
     </div>
   )
+
+  
 }
+
+/* this is where the server side render happen*/
+export const getServerSideProps =  wrapper.getServerSideProps(   //{store, req, res, ...etc}
+  async (context) => {
+      //console.log('server side -------------------------------------------------------------',context.query.login);
+      
+      if (context.query.search && context.query.page){
+        const search = context.query.search
+        let page = Number(context.query.page)
+        console.log('server side -------------------------------------------------------------',search,page);
+        
+        //getting users
+        await context.store.dispatch(searchusergithubThunk({pagenum:++page,pagesize:10, username:search}))        
+
+
+
+        //getting each user's followers
+        const usermanagementdata = context.store.getState('searchusergithub').searchusergithub.usermanagement.data
+
+        await Promise.all(usermanagementdata.map(async user=>{    
+          await context.store.dispatch(getusergithubThunk({login:user.login}))
+        }) )
+
+        return { props: { pagenum: page,search: search} }
+      }
+
+      return { props: { pagenum: 0, search: '' } }
+
+     
+  }
+); 
 
 
 

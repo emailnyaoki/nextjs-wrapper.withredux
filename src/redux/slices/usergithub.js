@@ -253,7 +253,7 @@ const slice = createSlice({
           data:data,
           status:'done',
           countrows:count,
-          page:res.data.pagenum,
+          page:res.data.pagenum||0,
         }
 
 
@@ -269,7 +269,6 @@ const slice = createSlice({
         state.usermanagement = {
           ...state.usermanagement, 
           data:null,
-          status:null,
           status:res.data.status,
           message:res.data.message
         }

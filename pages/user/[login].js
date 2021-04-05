@@ -255,7 +255,7 @@ const UserOne = (props) => {
 
 export default UserOne
 
-/* this is where the server side rebder happen*/
+/* this is where the server side render happen*/
 export const getServerSideProps =  wrapper.getServerSideProps(   //{store, req, res, ...etc}
   async (context) => {
       //console.log('server side -------------------------------------------------------------',context.query.login);
