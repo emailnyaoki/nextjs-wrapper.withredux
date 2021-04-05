@@ -255,21 +255,18 @@ const UserOne = (props) => {
 
 export default UserOne
 
-
+/* this is where the server side rebder happen*/
 export const getServerSideProps =  wrapper.getServerSideProps(   //{store, req, res, ...etc}
   async (context) => {
-      console.log('server side -------------------------------------------------------------',context.query.login);
+      //console.log('server side -------------------------------------------------------------',context.query.login);
 
       const login = context.query.login
-      //store.dispatch({type: 'TICK', payload: 'was set in other page'});
+      
       await context.store.dispatch(getuseronegithubThunk({login:login}))
       await context.store.dispatch(getfollowersThunk({login:login}))
       await context.store.dispatch(getfollowingThunk({login:login}))
       await context.store.dispatch(getreposThunk({login:login}))
 
-      return  {
-        props: {}, // will be passed to the page component as props
-      };
   }
 ); 
 
