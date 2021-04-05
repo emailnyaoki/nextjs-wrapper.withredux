@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Router from 'next/router'
 import Head from 'next/head';
 
+import {wrapper} from './../../src/redux/storessr';
+
 
 
 // dinamically imported component
@@ -52,7 +54,10 @@ const UserOne = (props) => {
   const theuser = (userList && userList.data && userList.data[login])?userList.data[login]: ((userGet && userGet.data)?userGet.data:null)
   const [user , setUser] = React.useState(theuser);
 
-  const getuseronegithubThunkDispatch = (login) =>{
+
+  /** NO SSR METHODS  -START--------------------------------------------------------------------------------------------------------*/
+
+  /* const getuseronegithubThunkDispatch = (login) =>{
     try {
       
       const resultAction = dispatch(getuseronegithubThunk({login:login}))
@@ -99,35 +104,35 @@ const UserOne = (props) => {
 
       return err;
     }
-  }
+  } */
 
 
-  React.useEffect(() => {
+   /* React.useEffect(() => {
     
     // to reduce API round trip, use data from Redux data, such as redirect from previous link
     // if null then call the API
     if (!(userList && userList.data && userList.data[login])){ 
-        getuseronegithubThunkDispatch(login)        
+        //getuseronegithubThunkDispatch(login)        
     } 
     
-    getfollowingThunkDispatch(login)
-    getfollowersThunkDispatch(login)
-    getreposThunkDispatch(login)
+    //getfollowingThunkDispatch(login)
+    //getfollowersThunkDispatch(login)
+    //getreposThunkDispatch(login)
 
-  },[])
+  },[])  */
 
 
   
 
-  React.useEffect(() => {
+ /*  React.useEffect(() => {
     
-    getuseronegithubThunkDispatch(login)        
-    getfollowingThunkDispatch(login)
-    getfollowersThunkDispatch(login)
-    getreposThunkDispatch(login)
+    //getuseronegithubThunkDispatch(login)        
+    //getfollowingThunkDispatch(login)
+    //getfollowersThunkDispatch(login)
+    //getreposThunkDispatch(login)
 
-  },[login])
-
+  },[login])  */
+  /** NO SSR METHODS - END --------------------------------------------------------------------------------------------------------*/
 
   const backtohome= () =>{
       Router.push('/')
@@ -135,7 +140,7 @@ const UserOne = (props) => {
 
   return (
       
-
+    
     <div className={classes.container}>
         <Head>
             <title>Oddle - Github User {login}</title>
@@ -144,9 +149,9 @@ const UserOne = (props) => {
         </Head>
      
       <main className={classes.main}>
-            { userGet && userGet.status==='loading'  &&
+            {/* { userGet && userGet.status==='loading'  &&
                 <LoadingIndicator></LoadingIndicator>
-            }
+            } */}
         
 
         <GridContainer>    
@@ -250,18 +255,36 @@ const UserOne = (props) => {
 
 export default UserOne
 
-export const getServerSideProps = async (context) => {
+/* export const getServerSideProps = async (context) => {
 //export async function getServerSideProps(context) {
 
     console.log('get first', context.query.login)
-    
-    
 
+    
+    
+  
+    
     return {
       props: {}, // will be passed to the page component as props
     };
-}
+}  */
 
+export const getServerSideProps =  wrapper.getServerSideProps(   //{store, req, res, ...etc}
+  async (context) => {
+      console.log('server side -------------------------------------------------------------',context.query.login);
+
+      const login = context.query.login
+      //store.dispatch({type: 'TICK', payload: 'was set in other page'});
+      await context.store.dispatch(getuseronegithubThunk({login:login}))
+      await context.store.dispatch(getfollowersThunk({login:login}))
+      await context.store.dispatch(getfollowingThunk({login:login}))
+      await context.store.dispatch(getreposThunk({login:login}))
+
+      return  {
+        props: {}, // will be passed to the page component as props
+      };
+  }
+); 
 
 const useStyles = makeStyles((theme) => ({
   container: {

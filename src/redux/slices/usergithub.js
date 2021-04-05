@@ -62,11 +62,11 @@ export const getusergithubThunk = createAsyncThunk(
 export const getuseronegithubThunk = createAsyncThunk(
   'getuseronegithubThunk',  //just a name
   async (params, {rejectWithValue}) => {
-
+    
     try {
       
       const response = await api.get(`https://api.github.com/users/${params.login}`);
-      
+     // console.log('called -----------------------------------------------------------------------', response)
       return response
 
 
@@ -583,7 +583,7 @@ const slice = createSlice({
 
 
     [HYDRATE]:(state, action) => {
-          console.log('HYDRATE', state, action.payload);
+          //console.log('HYDRATE', state, action.payload);
             return {
                 ...state,
                 ...action.payload[slice.name],

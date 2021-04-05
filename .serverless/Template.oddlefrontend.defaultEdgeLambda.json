@@ -1,6 +1,6 @@
 {
   "name": "zml9iaj-1w4bgp",
-  "hash": "RsURbmUGPaZK0sYk4dBYp19DGl5HJO9w14vhYzCd2Yc=",
+  "hash": "fk8PuOeB0DzQRpMbQQG/WzZutR7fURStxRHrgCe0y0w=",
   "description": "Default Lambda@Edge for Next CloudFront distribution",
   "memory": 512,
   "timeout": 10,

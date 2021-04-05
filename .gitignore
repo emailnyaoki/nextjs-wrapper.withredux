@@ -32,3 +32,15 @@ yarn-error.log*
 
 # vercel
 .vercel
+.serverless/Template.oddlefrontend.apiEdgeLambda.json
+.serverless/Template.oddlefrontend.CloudFront.json
+.serverless/Template.oddlefrontend.defaultEdgeLambda.json
+.serverless_nextjs/api-lambda/routes-manifest.json
+.serverless_nextjs/api-lambda/pages/api/hello.js
+.serverless_nextjs/default-lambda/manifest.json
+.serverless_nextjs/default-lambda/prerender-manifest.json
+.serverless_nextjs/default-lambda/routes-manifest.json
+.serverless_nextjs/default-lambda/pages/_error.js
+.serverless_nextjs/default-lambda/pages/index.js
+.serverless_nextjs/default-lambda/pages/user/[login].js
+.serverless_nextjs/default-lambda/pages/index.js
