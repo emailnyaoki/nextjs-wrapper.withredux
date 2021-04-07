@@ -78,7 +78,12 @@ export default function Home(props) {
     console.log('asasas')
     if (search.length>2){
         setUsername(search)
+
+        //CLIENT
         //searchusergithubThunkDispatch(search, 1)
+
+
+        // SSR 
         refreshData(search,1)
     }
 
@@ -89,9 +94,13 @@ export default function Home(props) {
 
   const handleChange = (event, value) =>{
     //console.log('page',page)
+
+    //CLIENT
     //setUsername(username)
     //setPage(value)
     //searchusergithubThunkDispatch(username, value)
+    
+    // SSR 
     refreshData(username,value)
     
   }
@@ -162,7 +171,7 @@ export default function Home(props) {
 
           { usermanagement.status==='done' &&  usermanagement.countrows>10 && 
           <div className={classes.pagi}>
-          <Pagination count={(usermanagement.countrows/10).toFixed(0)-1} className={classes.pagination} page={page} onChange={handleChange}/>
+          <Pagination count={(usermanagement.countrows/10).toFixed(0)-1} className={classes.pagination} page={props.pagenum} onChange={handleChange}/>
           </div>
           }
 
@@ -191,7 +200,7 @@ export const getServerSideProps =  wrapper.getServerSideProps(   //{store, req, 
         console.log('server side -------------------------------------------------------------',search,page);
         
         //getting users
-        await context.store.dispatch(searchusergithubThunk({pagenum:++page,pagesize:10, username:search}))        
+        await context.store.dispatch(searchusergithubThunk({pagenum:page,pagesize:10, username:search}))        
 
 
 
