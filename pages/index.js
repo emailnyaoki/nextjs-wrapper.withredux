@@ -123,14 +123,14 @@ export default function Home(props) {
   return (
     <div className={classes.container}>
         <Head>
-            <title>Oddle - Search Github User </title>
+            <title>Search Github User </title>
             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" key="viewport"  />
             <meta name="description" content='Oddle Front End Challenge' key="description" />
         </Head>
       
       <main className={classes.main}>
         <p className={classes.title}>
-          Oddle Front-End Challenge !
+          Search Github User
         </p>
         
                    
