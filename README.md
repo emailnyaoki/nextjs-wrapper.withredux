@@ -24,13 +24,6 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
-## THE APP ON AWS
-
-Open
-
-https://d3lpvx9c5mb27y.cloudfront.net/
-
-I deployed the app using AWS Amplify CLI. 
 
 ## THE APP
 
